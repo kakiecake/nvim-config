@@ -47,20 +47,14 @@ return {
     end,
     opts = function()
       local plugin = require("lazy.core.config").plugins["conform.nvim"]
-      if plugin.config ~= M.setup then
-        LazyVim.error({
-          "Don't set `plugin.config` for `conform.nvim`.\n",
-          "This will break **LazyVim** formatting.\n",
-          "Please refer to the docs at https://www.lazyvim.org/plugins/formatting",
-        }, { title = "LazyVim" })
-      end
+
       ---@class ConformOpts
       local opts = {
         -- LazyVim will use these options when formatting with the conform.nvim formatter
         format = {
           timeout_ms = 3000,
-          async = false, -- not recommended to change
-          quiet = false, -- not recommended to change
+          async = false,       -- not recommended to change
+          quiet = false,       -- not recommended to change
           lsp_fallback = true, -- not recommended to change
         },
         ---@type table<string, conform.FormatterUnit[]>
@@ -85,6 +79,5 @@ return {
       }
       return opts
     end,
-    config = M.setup,
   },
 }
